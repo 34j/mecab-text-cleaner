@@ -37,7 +37,16 @@ Simple Python package for getting japanese reading (yomigana) using MeCab
 Install this via pip (or your favourite package manager):
 
 ```shell
-pip install mecab-text-cleaner
+pip install mecab-text-cleaner[unidecode]
+```
+
+## Usage
+
+```python
+from mecab_text_cleaner import to_reading, to_ascii
+
+assert to_reading("     空、雲。\n雨！（") == "ソ]ラ、 ク]モ。\nア]メ！（"
+assert to_ascii_clean("      한空、雲。\n雨！（") == "han so]ra, ku]mo. \na]me!("
 ```
 
 ## Contributors ✨
