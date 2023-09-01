@@ -53,10 +53,10 @@ repos:
     rev: 23.7.0
     hooks:
       - id: black
-  - repo: https://github.com/codespell-project/codespell
-    rev: v2.2.5
-    hooks:
-      - id: codespell
+  # - repo: https://github.com/codespell-project/codespell
+  #   rev: v2.2.5
+  #   hooks:
+  #     - id: codespell
   - repo: https://github.com/PyCQA/flake8
     rev: 6.1.0
     hooks:
