@@ -138,6 +138,7 @@ def to_reading(
     add_blank_between_words: bool = True,
     when_unknown: Literal["passthrough", "*", "unidecode"]
     | Callable[[str], str] = "passthrough",
+    tagger: fugashi.Tagger = fugashi.Tagger(),
 ) -> str:
     """Convert text to reading.
     Note that MeCab interprets spaces as word boundaries, and will be removed.
@@ -160,6 +161,8 @@ def to_reading(
         "passthrough" will pass the original text,
         "*" will pass "*", "unidecode" will use unidecode,
         and a callable will be called with the original text
+    tagger : fugashi.Tagger, optional
+        The tagger to use, by default fugashi.Tagger()
 
     Returns
     -------
@@ -174,23 +177,28 @@ def to_reading(
     Examples
     --------
     >>> from mecab_text_cleaner import to_reading
-    >>> to_reading("     空、雲。\n雨！（")
-    'ソ]ラ、 ク]モ。\nア]メ！（'
+    >>> to_reading("     空、雲。\\n雨！（")
+    'ソ]ラ、 ク]モ。\\nア]メ！（'
     """
     if when_unknown == "unidecode":
+        # check unidecode first
         import unidecode
+
     res = ""
-    tagger = fugashi.Tagger()
+
     for line in text.splitlines():
         for word in tagger(line):
             LOG.warn(f"word={word}, feature={word.feature}")
             reading = getattr(word.feature, reading_type)
+
             if reading in ("*", None):
-                # pos = word.feature.pos.rstrip().split(",")
+                # unknown reading
                 if not (word.feature.pos1 == "補助記号" and word.feature.pos2 == "一般"):
+                    # known symbol
                     if add_blank_between_words:
                         res = res[:-1]
                     res += word.surface
+                # unknown symbol
                 elif when_unknown == "passthrough":
                     res += word.surface
                 elif when_unknown == "*":
@@ -203,15 +211,21 @@ def to_reading(
                     raise ValueError(
                         f"when_unknown={when_unknown} is not supported"
                     )  # pragma: no cover
+
+                # add blank between words
                 if add_blank_between_words:
                     res += " "
                 continue
+
+            # known reading
             if (
                 add_atype
                 and word.feature.aType is not None
                 and word.feature.aType.isdigit()
             ):
+                # aType is number
                 aType = int(word.feature.aType)
+
                 if aType == 0:
                     reading += "="
                 elif aType <= len(reading):
@@ -222,12 +236,23 @@ def to_reading(
                         f"of len={len(reading)}, ignoring",
                         RuntimeWarning,
                     )  # pragma: no cover
+            else:
+                # no aType
+                pass
             res += reading
+
+            # add blank between words
             if add_blank_between_words:
                 res += " "
+
+        # remove last blank
         if add_blank_between_words:
             res = res[:-1]
+
+        # add newline
         res += "\n"
+
+    # remove last newline
     return res[:-1]
 
 
@@ -236,8 +261,49 @@ def to_ascii_clean(
     reading_type: Literal["orth", "pron"] = "pron",
     add_atype: bool = True,
     add_blank_between_words: bool = True,
+    tagger: fugashi.Tagger = fugashi.Tagger(),
     remove_multiple_spaces: bool = True,
 ) -> str:
+    """Convert text to reading, then to ascii.
+
+    Parameters
+    ----------
+    text : str
+        The text to convert.
+    reading_type : Literal[&quot;orth&quot;, &quot;pron&quot;], optional
+        Reading type, by default "pron"
+        "pron" is the pronunciation (発音形), "orth" is the orthography (書字形)
+    add_atype : bool, optional
+        Whether to consider aType (アクセント型) and add "]" to the reading, by default True
+    add_blank_between_words : bool, optional
+        Whether to add a blank between words, by default True
+    when_unknown : Literal[&quot;passthrough&quot;, , optional
+        What to do when the reading is unknown ("補助記号" and "一般"),
+        by default "passthrough"
+        "passthrough" will pass the original text,
+        "*" will pass "*", "unidecode" will use unidecode,
+        and a callable will be called with the original text
+    tagger : fugashi.Tagger, optional
+        The tagger to use, by default fugashi.Tagger()
+    remove_multiple_spaces : bool, optional
+        Whether to remove multiple spaces created by unidecode, by default True
+
+    Returns
+    -------
+    str
+        The ascii-cleaned text
+
+    Raises
+    ------
+    ImportError
+        When unidecode is not installed
+
+    Examples
+    --------
+    >>> from mecab_text_cleaner import to_reading
+    >>> to_reading("     空、雲。\\n雨！（")
+    'so]ra,  ku]mo. \\na]me!('
+    """
     import unidecode
 
     text = unidecode.unidecode(
@@ -247,6 +313,7 @@ def to_ascii_clean(
             add_atype=add_atype,
             add_blank_between_words=add_blank_between_words,
             when_unknown="passthrough",
+            tagger=tagger,
         )
     )
     if remove_multiple_spaces:
