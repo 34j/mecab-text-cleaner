@@ -133,7 +133,7 @@ class UnidicFeatures29(UnidicFeatures26):
 
 def to_reading(
     text: str,
-    reading_type: Literal["orth", "pron"] = "pron",
+    reading_type: Literal["orth", "pron", "kana"] = "pron",
     add_atype: bool = True,
     add_blank_between_words: bool = True,
     when_unknown: Literal["passthrough", "*", "unidecode"]
@@ -148,9 +148,11 @@ def to_reading(
     ----------
     text : str
         The text to convert.
-    reading_type : Literal[&quot;orth&quot;, &quot;pron&quot;], optional
+    reading_type : Literal[&quot;orth&quot;, &quot;pron&quot;,
+    &quot;kana&quot;], optional
         Reading type, by default "pron"
-        "pron" is the pronunciation (発音形), "orth" is the orthography (書字形)
+        "pron" is the pronunciation (発音形), "orth" is the orthography (書字形),
+        "kana" is the kana(仮名) form of orthography
     add_atype : bool, optional
         Whether to consider aType (アクセント型) and add "]" to the reading, by default True
     add_blank_between_words : bool, optional
@@ -188,7 +190,7 @@ def to_reading(
 
     for line in text.splitlines():
         for word in tagger(line):
-            LOG.warn(f"word={word}, feature={word.feature}")
+            LOG.debug(f"word={word}, feature={word.feature}")
             reading = getattr(word.feature, reading_type)
 
             if reading in ("*", None):
@@ -258,7 +260,7 @@ def to_reading(
 
 def to_ascii_clean(
     text: str,
-    reading_type: Literal["orth", "pron"] = "pron",
+    reading_type: Literal["orth", "pron", "kana"] = "pron",
     add_atype: bool = True,
     add_blank_between_words: bool = True,
     tagger: fugashi.Tagger = fugashi.Tagger(),
@@ -270,9 +272,11 @@ def to_ascii_clean(
     ----------
     text : str
         The text to convert.
-    reading_type : Literal[&quot;orth&quot;, &quot;pron&quot;], optional
+    reading_type : Literal[&quot;orth&quot;, &quot;pron&quot;,
+    &quot;kana&quot;], optional
         Reading type, by default "pron"
-        "pron" is the pronunciation (発音形), "orth" is the orthography (書字形)
+        "pron" is the pronunciation (発音形), "orth" is the orthography (書字形),
+        "kana" is the kana(仮名) form of orthography
     add_atype : bool, optional
         Whether to consider aType (アクセント型) and add "]" to the reading, by default True
     add_blank_between_words : bool, optional
