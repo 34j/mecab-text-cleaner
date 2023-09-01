@@ -302,7 +302,7 @@ def to_ascii_clean(
     --------
     >>> from mecab_text_cleaner import to_reading
     >>> to_reading("     空、雲。\\n雨！（")
-    'so]ra,  ku]mo. \\na]me!('
+    'so]ra, ku]mo. \\na]me!('
     """
     import unidecode
 
