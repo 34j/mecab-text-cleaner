@@ -1,0 +1,11 @@
+# Changelog
+
+## v0.1.0 (2023-09-04)
+
+### Documentation
+
+- Fix typo in readme.md (#2) ([`11e8405`](https://github.com/34j/mecab-text-cleaner/commit/11e840592b1cca3762ceb16e4654d46337c98533))
+
+### Feature
+
+- Add main feat (#1) ([`01cc0eb`](https://github.com/34j/mecab-text-cleaner/commit/01cc0eb70f0085fdde74f794ad1edadd1fdeb80a))
