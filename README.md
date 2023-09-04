@@ -39,6 +39,7 @@ Install this via pip (or your favourite package manager):
 
 ```shell
 pip install mecab-text-cleaner[unidecode,unidic]
+python -m unidic download
 ```
 
 ## Usage
