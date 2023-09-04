@@ -50,7 +50,7 @@ pip install mecab-text-cleaner[unidecode,unidic]
 ```shell
 > mtc いい天気ですね。
 イ]ー テ]ンキ デス ネ。
->mtc いい天気ですね。 --ascii
+> mtc いい天気ですね。 --ascii
 i] te]nki desu ne.
 > mtc いい天気ですね --no-add-atype --no-add-blank-between-words
 イーテンキデスネ
