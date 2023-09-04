@@ -31,7 +31,7 @@
 </p>
 
 This is a simple Python package for getting japanese readings (yomigana) and accents using MeCab.
-However, please consider using [pyopenjtalk](https://github.com/r9y9/pyopenjtalk), as this package does not account for accent changes in compound words.
+Please also consider using [pyopenjtalk](https://github.com/r9y9/pyopenjtalk) (no accents) or [pyopenjtalk_g2p_prosody (ESPnet)](https://github.com/espnet/espnet/blob/5d0758e2a7063b82d1f10a8ac2de98eb6cf8a352/espnet2/text/phoneme_tokenizer.py#L103) (with accents), as this package does not account for accent changes in compound words.
 
 ## Installation
 
