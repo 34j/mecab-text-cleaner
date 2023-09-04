@@ -59,7 +59,7 @@ i] te]nki desu ne.
 ```
 
 ```python
-from mecab_text_cleaner import to_reading, to_ascii
+from mecab_text_cleaner import to_reading, to_ascii_clean
 
 assert to_reading("     空、雲。\n雨！（") == "ソ]ラ、 ク]モ。\nア]メ！（"
 assert to_ascii_clean("      한空、雲。\n雨！（") == "han so]ra, ku]mo. \na]me!("
