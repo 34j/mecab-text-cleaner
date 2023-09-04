@@ -35,11 +35,14 @@ However, please consider using [pyopenjtalk](https://github.com/r9y9/pyopenjtalk
 
 ## Installation
 
-Install this via pip (or your favourite package manager):
+Install this via pip or pipx (or your favourite package manager):
+
+```shell
+pipx install mecab-text-cleaner[unidecode,unidic]
+```
 
 ```shell
 pip install mecab-text-cleaner[unidecode,unidic]
-python -m unidic download
 ```
 
 ## Usage

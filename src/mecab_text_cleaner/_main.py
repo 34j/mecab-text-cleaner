@@ -131,6 +131,23 @@ class UnidicFeatures29(UnidicFeatures26):
     """語彙素ID"""
 
 
+def _get_tagger() -> fugashi.Tagger:
+    try:
+        return fugashi.Tagger()
+    except BaseException as e:
+        LOG.exception(e)
+
+        import importlib.util
+
+        if importlib.util.find_spec("unidic"):
+            LOG.info("unidic is installed, trying to download unidic")
+            import unidic.download
+
+            unidic.download.download_version()
+            return fugashi.Tagger()
+        raise RuntimeError("fugashi.Tagger() failed") from e
+
+
 def to_reading(
     text: str,
     reading_type: Literal["orth", "pron", "kana"] = "pron",
@@ -138,7 +155,7 @@ def to_reading(
     add_blank_between_words: bool = True,
     when_unknown: Literal["passthrough", "*", "unidecode"]
     | Callable[[str], str] = "passthrough",
-    tagger: fugashi.Tagger = fugashi.Tagger(),
+    tagger: fugashi.Tagger = _get_tagger(),
 ) -> str:
     """Convert text to reading.
     Note that MeCab interprets spaces as word boundaries, and will be removed.
@@ -279,7 +296,7 @@ def to_ascii_clean(
     reading_type: Literal["orth", "pron", "kana"] = "pron",
     add_atype: bool = True,
     add_blank_between_words: bool = True,
-    tagger: fugashi.Tagger = fugashi.Tagger(),
+    tagger: fugashi.Tagger = _get_tagger(),
     remove_multiple_spaces: bool = True,
 ) -> str:
     """Convert text to reading, then to ascii.
