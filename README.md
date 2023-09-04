@@ -30,7 +30,7 @@
   <img src="https://img.shields.io/pypi/l/mecab-text-cleaner.svg?style=flat-square" alt="License">
 </p>
 
-This is a simple Python package for getting japanese reading (yomigana) using MeCab.
+This is a simple Python package for getting japanese readings (yomigana) and accents using MeCab.
 However, please consider using [pyopenjtalk](https://github.com/r9y9/pyopenjtalk), as this package does not account for accent changes in compound words.
 
 ## Installation
@@ -38,7 +38,7 @@ However, please consider using [pyopenjtalk](https://github.com/r9y9/pyopenjtalk
 Install this via pip (or your favourite package manager):
 
 ```shell
-pip install mecab-text-cleaner[unidecode]
+pip install mecab-text-cleaner[unidecode,unidic]
 ```
 
 ## Usage
