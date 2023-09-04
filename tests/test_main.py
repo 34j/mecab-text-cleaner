@@ -1,3 +1,5 @@
+import pytest
+
 from mecab_text_cleaner import to_ascii_clean, to_reading
 
 
@@ -6,7 +8,7 @@ def test_simple():
 
 
 def test_complex():
-    assert to_reading(" 1한.    局長、武蔵 小杉に向かう。") == "1 한. キョクチョー=、 ム]サシ コスギ ニ ムカウ=。"
+    assert to_reading(" 1한.    局長、武蔵 小杉に向かう。") == "1 한. キョクチョー=、 ム]サシ コスギ= ニ ムカウ=。"
 
 
 def test_multiline():
@@ -51,3 +53,8 @@ def test_to_ascii_2():
         to_ascii_clean("     한空、雲。\n雨！（", remove_multiple_spaces=False)
         == "han so]ra,  ku]mo. \na]me!("
     )
+
+
+def test_multiple_accents():
+    with pytest.warns(RuntimeWarning):
+        assert to_reading("木曜") == "モクヨ]ー"

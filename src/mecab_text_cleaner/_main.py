@@ -223,21 +223,37 @@ def to_reading(
             if (
                 add_atype
                 and word.feature.aType is not None
-                and word.feature.aType.isdigit()
+                and word.feature.aType != "*"
             ):
                 # aType is number
-                aType = int(word.feature.aType)
-
-                if aType == 0:
-                    reading += "="
-                elif aType <= len(reading):
-                    reading = reading[:aType] + "]" + reading[aType:]
-                else:
+                try:
+                    aTypes = [int(aType) for aType in word.feature.aType.split(",")]
+                except ValueError as e:
                     warnings.warn(
-                        f"aType={aType} is too large for reading={reading} "
-                        f"of len={len(reading)}, ignoring",
+                        f"aType={word.feature.aType} is not a number, ignoring",
                         RuntimeWarning,
+                        source=e,
                     )  # pragma: no cover
+                else:
+                    if len(aTypes) > 1:
+                        warnings.warn(
+                            f"aType={word.feature.aType} has multiple values, "
+                            "using the first one. "
+                            "This is expected to happen.",
+                            RuntimeWarning,
+                        )
+                    aType = aTypes[0]
+
+                    if aType == 0:
+                        reading += "="
+                    elif aType <= len(reading):
+                        reading = reading[:aType] + "]" + reading[aType:]
+                    else:
+                        warnings.warn(
+                            f"aType={aType} is too large for reading={reading} "
+                            f"of len={len(reading)}, ignoring",
+                            RuntimeWarning,
+                        )  # pragma: no cover
             else:
                 # no aType
                 pass
