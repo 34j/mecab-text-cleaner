@@ -30,14 +30,39 @@
   <img src="https://img.shields.io/pypi/l/mecab-text-cleaner.svg?style=flat-square" alt="License">
 </p>
 
-Simple Python package for getting japanese reading (yomigana) using MeCab
+This is a simple Python package for getting japanese readings (yomigana) and accents using MeCab.
+Please also consider using [pyopenjtalk](https://github.com/r9y9/pyopenjtalk) (no accents) or [pyopenjtalk_g2p_prosody (ESPnet)](https://github.com/espnet/espnet/blob/5d0758e2a7063b82d1f10a8ac2de98eb6cf8a352/espnet2/text/phoneme_tokenizer.py#L103) (with accents), as this package does not account for accent changes in compound words.
 
 ## Installation
 
-Install this via pip (or your favourite package manager):
+Install this via pip or pipx (or your favourite package manager):
 
 ```shell
-pip install mecab-text-cleaner
+pipx install mecab-text-cleaner[unidecode,unidic]
+```
+
+```shell
+pip install mecab-text-cleaner[unidecode,unidic]
+```
+
+## Usage
+
+```shell
+> mtc いい天気ですね。
+イ]ー テ]ンキ デス ネ。
+>mtc いい天気ですね。 --ascii
+i] te]nki desu ne.
+> mtc いい天気ですね --no-add-atype --no-add-blank-between-words
+イーテンキデスネ
+> mtc いい天気ですね --no-add-atype --no-add-blank-between-words -r kana
+イイテンキデスネ
+```
+
+```python
+from mecab_text_cleaner import to_reading, to_ascii_clean
+
+assert to_reading("     空、雲。\n雨！（") == "ソ]ラ、 ク]モ。\nア]メ！（"
+assert to_ascii_clean("      한空、雲。\n雨！（") == "han so]ra, ku]mo. \na]me!("
 ```
 
 ## Contributors ✨

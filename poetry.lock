@@ -12,6 +12,24 @@ files = [
 ]
 
 [[package]]
+name = "attrs"
+version = "23.1.0"
+description = "Classes Without Boilerplate"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "attrs-23.1.0-py3-none-any.whl", hash = "sha256:1f28b4522cdc2fb4256ac1a020c78acf9cba2c6b461ccd2c126f3aa8e8335d04"},
+    {file = "attrs-23.1.0.tar.gz", hash = "sha256:6279836d581513a26f1bf235f9acd333bc9115683f14f7e8fae46c98fc50e015"},
+]
+
+[package.extras]
+cov = ["attrs[tests]", "coverage[toml] (>=5.3)"]
+dev = ["attrs[docs,tests]", "pre-commit"]
+docs = ["furo", "myst-parser", "sphinx", "sphinx-notfound-page", "sphinxcontrib-towncrier", "towncrier", "zope-interface"]
+tests = ["attrs[tests-no-zope]", "zope-interface"]
+tests-no-zope = ["cloudpickle", "hypothesis", "mypy (>=1.1.1)", "pympler", "pytest (>=4.3.0)", "pytest-mypy-plugins", "pytest-xdist[psutil]"]
+
+[[package]]
 name = "babel"
 version = "2.12.1"
 description = "Internationalization utilities"
@@ -130,6 +148,20 @@ files = [
     {file = "charset_normalizer-3.2.0-cp39-cp39-win_amd64.whl", hash = "sha256:7095f6fbfaa55defb6b733cfeb14efaae7a29f0b59d8cf213be4e7ca0b857b80"},
     {file = "charset_normalizer-3.2.0-py3-none-any.whl", hash = "sha256:8e098148dd37b4ce3baca71fb394c81dc5d9c7728c95df695d2dca218edf40e6"},
 ]
+
+[[package]]
+name = "click"
+version = "8.1.7"
+description = "Composable command line interface toolkit"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "click-8.1.7-py3-none-any.whl", hash = "sha256:ae74fb96c20a0277a1d615f1e4d73c8414f5a98db8b799a7931d1582f3390c28"},
+    {file = "click-8.1.7.tar.gz", hash = "sha256:ca9853ad459e787e2192211578cc907e7594e294c7ccc834310722b41b9ca6de"},
+]
+
+[package.dependencies]
+colorama = {version = "*", markers = "platform_system == \"Windows\""}
 
 [[package]]
 name = "colorama"
@@ -262,6 +294,56 @@ typing-extensions = {version = ">=4.7.1", markers = "python_version < \"3.11\""}
 [package.extras]
 docs = ["furo (>=2023.7.26)", "sphinx (>=7.1.2)", "sphinx-autodoc-typehints (>=1.24)"]
 testing = ["covdefaults (>=2.3)", "coverage (>=7.3)", "diff-cover (>=7.7)", "pytest (>=7.4)", "pytest-cov (>=4.1)", "pytest-mock (>=3.11.1)", "pytest-timeout (>=2.1)"]
+
+[[package]]
+name = "fugashi"
+version = "1.3.0"
+description = "A Cython MeCab wrapper for fast, pythonic Japanese tokenization."
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "fugashi-1.3.0-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:6a268af1b31e5348b881743867630175bd03fe5e8f9c6aeb6a36763bb8385dbf"},
+    {file = "fugashi-1.3.0-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:d3f3191305e2b6fa09cbd0d3521bed9fee0eab48ffe26de7d3590e66b7a042ed"},
+    {file = "fugashi-1.3.0-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:90ebbcfc3e36aff6cd8a08272591ee1ffbc34d622729b2b6a186cf33bd638e56"},
+    {file = "fugashi-1.3.0-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:8a4f2f3732cf9b99bf04f463beef604490b59fdbce4f77dc14e4f1e291ad0ef6"},
+    {file = "fugashi-1.3.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:c14e385c90230d49e56ad2ddb49a949c317b2ae9b46ce99cc8923447ae9c4e7c"},
+    {file = "fugashi-1.3.0-cp310-cp310-win_amd64.whl", hash = "sha256:1a059e0e5f5ac48401a51760be6d16d532b0b27672e63a61dae9e5da96148a13"},
+    {file = "fugashi-1.3.0-cp311-cp311-macosx_10_9_universal2.whl", hash = "sha256:85f1669bb5af7a0d761cd64eaf6becdab5460c6fe6ce4153d3b23ac6f71a797e"},
+    {file = "fugashi-1.3.0-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:6f5f71b796f126efbb2e38f027bc4dcfc01e115ea79b115ba855dc08e6e6a72d"},
+    {file = "fugashi-1.3.0-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:fd6af40364cb27553e632b8c9672dc97dde908d82ef3e66bbd3178c6a7f25d3b"},
+    {file = "fugashi-1.3.0-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:edf2bf3155a2bcd43f305874de928a40602e46dcb76725c34293c211429d9b66"},
+    {file = "fugashi-1.3.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:96437109c407d1f6b47535767c8439be7c4a5f8859213ba25b042145dcbda405"},
+    {file = "fugashi-1.3.0-cp311-cp311-win_amd64.whl", hash = "sha256:75c88c30a60222f95ea245cdd92b3fa7bb3ecbe74626ffe22f7cb37f5206e207"},
+    {file = "fugashi-1.3.0-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:6ea537c6f517f722442f5af1da0b3edd00f226cb02386fcdf6b8ba69d38dff8d"},
+    {file = "fugashi-1.3.0-cp37-cp37m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:48ed15444e54d1062bb9b8bf71bd0ee3f58188d875cfb02743cb701963324fe7"},
+    {file = "fugashi-1.3.0-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:c100cde515d312d5205884ce6ea35f1d6e8e88079f05772010eccbf699833d5b"},
+    {file = "fugashi-1.3.0-cp37-cp37m-win_amd64.whl", hash = "sha256:9f1d50f5ea19479c2b2beae11242e723a738429ee750f072c59a9ee6bb071399"},
+    {file = "fugashi-1.3.0-cp38-cp38-macosx_10_9_universal2.whl", hash = "sha256:7657b72344273c52c9aaab3ebd1584fb7e1b86ce5664b314f1a632bb71d5aa2d"},
+    {file = "fugashi-1.3.0-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:883619c3ab1d0f331b404c923ccf23624c601478923a802c47dc84f0b06defa6"},
+    {file = "fugashi-1.3.0-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:96644c68795f2723e051c6ddc0abb8a14a9f7458f8334034d19fecbf3d8afd9c"},
+    {file = "fugashi-1.3.0-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:33f438388a52fc15e3a4d94b99f61b840a1851813773224ad223e1007607c8b0"},
+    {file = "fugashi-1.3.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:c95300d2cde2b8524b8638b5dd48ed5b2463de37f1a599155011ba0b1bf7a888"},
+    {file = "fugashi-1.3.0-cp38-cp38-win_amd64.whl", hash = "sha256:bb3106dbf5ada2c372f7773a8e4962a920c696305e26fbce53099e0b5b536f5d"},
+    {file = "fugashi-1.3.0-cp39-cp39-macosx_10_9_universal2.whl", hash = "sha256:2d8ff8fb475ce939956efd77f228c1a624eec9c933a60d04ef1182485c279af8"},
+    {file = "fugashi-1.3.0-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:16b0c314676a608e3fb6fb7a50f454fff557b544dc85552d89729fa046d8d408"},
+    {file = "fugashi-1.3.0-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:b545087036e5ec835cedd25f5a9b554aeaa12183720d1e5a32b377e7eb3fed3e"},
+    {file = "fugashi-1.3.0-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:19a4653788727781501279cb65143db8ba487715c33da484bfd0af6744f76938"},
+    {file = "fugashi-1.3.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:1a7b75ef71dee7b4b5ab995b675775e5317303731942eb8faf33567dbf8fc3f0"},
+    {file = "fugashi-1.3.0-cp39-cp39-win_amd64.whl", hash = "sha256:75e93a5178d812f33dbbc1143aafe9fb08ac04837a36e219da7f632ceb9a37fc"},
+    {file = "fugashi-1.3.0-pp310-pypy310_pp73-macosx_10_9_x86_64.whl", hash = "sha256:1413c7d7c4954a323731d343c5c063c5f357c801018dac64cd0186ad66954b63"},
+    {file = "fugashi-1.3.0-pp37-pypy37_pp73-macosx_10_9_x86_64.whl", hash = "sha256:5d87a226087c5fb15fec2402585aeb490c79ad8bb483213f713976aaf2ed4608"},
+    {file = "fugashi-1.3.0-pp38-pypy38_pp73-macosx_10_9_x86_64.whl", hash = "sha256:bab08d7e9097641aec4c3572d77ab31be4bc80278ddfd120f0e51e91cbf79ea2"},
+    {file = "fugashi-1.3.0-pp39-pypy39_pp73-macosx_10_9_x86_64.whl", hash = "sha256:bab1f55e27e0f2cc08c57dbf9135c03b9f38a6e491c2f56f8e78bb4939d4c60b"},
+    {file = "fugashi-1.3.0.tar.gz", hash = "sha256:0deec0ace31859897774238a6d7c136243f83f6fe4f98fdd48e4e770d859c1fc"},
+]
+
+[package.dependencies]
+unidic = {version = "*", optional = true, markers = "extra == \"unidic\""}
+unidic-lite = {version = "*", optional = true, markers = "extra == \"unidic-lite\""}
+
+[package.extras]
+unidic = ["unidic"]
+unidic-lite = ["unidic-lite"]
 
 [[package]]
 name = "identify"
@@ -511,6 +593,17 @@ files = [
 ]
 
 [[package]]
+name = "plac"
+version = "1.3.5"
+description = "The smartest command line arguments parser in the world"
+optional = false
+python-versions = "*"
+files = [
+    {file = "plac-1.3.5-py2.py3-none-any.whl", hash = "sha256:a8933d21a40fe2cec177a2f96217425a4e889d275aa3e25ecf9a9640ab16d416"},
+    {file = "plac-1.3.5.tar.gz", hash = "sha256:38bdd864d0450fb748193aa817b9c458a8f5319fbf97b2261151cfc0a5812090"},
+]
+
+[[package]]
 name = "platformdirs"
 version = "3.10.0"
 description = "A small Python package for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
@@ -542,13 +635,13 @@ testing = ["pytest", "pytest-benchmark"]
 
 [[package]]
 name = "pre-commit"
-version = "3.3.3"
+version = "3.4.0"
 description = "A framework for managing and maintaining multi-language pre-commit hooks."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "pre_commit-3.3.3-py2.py3-none-any.whl", hash = "sha256:10badb65d6a38caff29703362271d7dca483d01da88f9d7e05d0b97171c136cb"},
-    {file = "pre_commit-3.3.3.tar.gz", hash = "sha256:a2256f489cd913d575c145132ae196fe335da32d91a8294b7afe6622335dd023"},
+    {file = "pre_commit-3.4.0-py2.py3-none-any.whl", hash = "sha256:96d529a951f8b677f730a7212442027e8ba53f9b04d217c4c67dc56c393ad945"},
+    {file = "pre_commit-3.4.0.tar.gz", hash = "sha256:6bbd5129a64cad4c0dfaeeb12cd8f7ea7e15b77028d985341478c8af3c759522"},
 ]
 
 [package.dependencies]
@@ -574,13 +667,13 @@ plugins = ["importlib-metadata"]
 
 [[package]]
 name = "pytest"
-version = "7.4.0"
+version = "7.4.1"
 description = "pytest: simple powerful testing with Python"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "pytest-7.4.0-py3-none-any.whl", hash = "sha256:78bf16451a2eb8c7a2ea98e32dc119fd2aa758f1d5d66dbf0a59d69a3969df32"},
-    {file = "pytest-7.4.0.tar.gz", hash = "sha256:b4bf8c45bd59934ed84001ad51e11b4ee40d40a1229d2c79f9c592b0a3f6bd8a"},
+    {file = "pytest-7.4.1-py3-none-any.whl", hash = "sha256:460c9a59b14e27c602eb5ece2e47bec99dc5fc5f6513cf924a7d03a578991b1f"},
+    {file = "pytest-7.4.1.tar.gz", hash = "sha256:2f2301e797521b23e4d2585a0a3d7b5e50fdddaaf7e7d6773ea26ddb17c213ab"},
 ]
 
 [package.dependencies]
@@ -889,6 +982,26 @@ files = [
 ]
 
 [[package]]
+name = "tqdm"
+version = "4.66.1"
+description = "Fast, Extensible Progress Meter"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "tqdm-4.66.1-py3-none-any.whl", hash = "sha256:d302b3c5b53d47bce91fea46679d9c3c6508cf6332229aa1e7d8653723793386"},
+    {file = "tqdm-4.66.1.tar.gz", hash = "sha256:d88e651f9db8d8551a62556d3cff9e3034274ca5d66e93197cf2490e2dcb69c7"},
+]
+
+[package.dependencies]
+colorama = {version = "*", markers = "platform_system == \"Windows\""}
+
+[package.extras]
+dev = ["pytest (>=6)", "pytest-cov", "pytest-timeout", "pytest-xdist"]
+notebook = ["ipywidgets (>=6)"]
+slack = ["slack-sdk"]
+telegram = ["requests"]
+
+[[package]]
 name = "typing-extensions"
 version = "4.7.1"
 description = "Backported and Experimental Type Hints for Python 3.7+"
@@ -897,6 +1010,43 @@ python-versions = ">=3.7"
 files = [
     {file = "typing_extensions-4.7.1-py3-none-any.whl", hash = "sha256:440d5dd3af93b060174bf433bccd69b0babc3b15b1a8dca43789fd7f61514b36"},
     {file = "typing_extensions-4.7.1.tar.gz", hash = "sha256:b75ddc264f0ba5615db7ba217daeb99701ad295353c45f9e95963337ceeeffb2"},
+]
+
+[[package]]
+name = "unidecode"
+version = "1.3.6"
+description = "ASCII transliterations of Unicode text"
+optional = false
+python-versions = ">=3.5"
+files = [
+    {file = "Unidecode-1.3.6-py3-none-any.whl", hash = "sha256:547d7c479e4f377b430dd91ac1275d593308dce0fc464fb2ab7d41f82ec653be"},
+    {file = "Unidecode-1.3.6.tar.gz", hash = "sha256:fed09cf0be8cf415b391642c2a5addfc72194407caee4f98719e40ec2a72b830"},
+]
+
+[[package]]
+name = "unidic"
+version = "1.1.0"
+description = "UniDic packaged for Python"
+optional = false
+python-versions = ">=3.5"
+files = [
+    {file = "unidic-1.1.0.tar.gz", hash = "sha256:0ab91c05de342c84d2a6314901fd3afb9061ecd7534dd4a0431dccbb87d921b7"},
+]
+
+[package.dependencies]
+plac = ">=1.1.3,<2.0.0"
+requests = ">=2.22.0,<3.0.0"
+tqdm = ">=4.41.1,<5.0.0"
+wasabi = ">=0.6.0,<1.0.0"
+
+[[package]]
+name = "unidic-lite"
+version = "1.0.8"
+description = "A small version of UniDic packaged for Python"
+optional = false
+python-versions = "*"
+files = [
+    {file = "unidic-lite-1.0.8.tar.gz", hash = "sha256:db9d4572d9fdd4d00a97949d4b0741ec480ee05a7e7e2e32f547500dae27b245"},
 ]
 
 [[package]]
@@ -937,6 +1087,17 @@ docs = ["furo (>=2023.7.26)", "proselint (>=0.13)", "sphinx (>=7.1.2)", "sphinx-
 test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess (>=1)", "flaky (>=3.7)", "packaging (>=23.1)", "pytest (>=7.4)", "pytest-env (>=0.8.2)", "pytest-freezer (>=0.4.8)", "pytest-mock (>=3.11.1)", "pytest-randomly (>=3.12)", "pytest-timeout (>=2.1)", "setuptools (>=68)", "time-machine (>=2.10)"]
 
 [[package]]
+name = "wasabi"
+version = "0.10.1"
+description = "A lightweight console printing and formatting toolkit"
+optional = false
+python-versions = "*"
+files = [
+    {file = "wasabi-0.10.1-py3-none-any.whl", hash = "sha256:fe862cc24034fbc9f04717cd312ab884f71f51a8ecabebc3449b751c2a649d83"},
+    {file = "wasabi-0.10.1.tar.gz", hash = "sha256:c8e372781be19272942382b14d99314d175518d7822057cb7a97010c4259d249"},
+]
+
+[[package]]
 name = "zipp"
 version = "3.16.2"
 description = "Backport of pathlib-compatible object wrapper for zip files"
@@ -954,4 +1115,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "00ead3f7489284d54fc74f838a5e9bd73104f481af5e426ab337ee6aaa6b2989"
+content-hash = "95aa0379f32bc5c7bda38641a740b2d8d0d28c4f670d11ce3ecc4edb66cf5de5"
