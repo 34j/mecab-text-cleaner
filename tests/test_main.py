@@ -8,7 +8,7 @@ def test_simple():
 
 
 def test_complex():
-    assert to_reading(" 1한.    局長、武蔵 小杉に向かう。") == "1 한. キョクチョー=、 ム]サシ コスギ= ニ ムカウ=。"
+    assert to_reading(" 1한.    人、武蔵 小杉に向かう。") == "1 한. ヒト=、 ム]サシ コスギ= ニ ムカウ=。"
 
 
 def test_multiline():
