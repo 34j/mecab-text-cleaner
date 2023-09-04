@@ -1,3 +1,4 @@
+from logging import basicConfig, captureWarnings
 from typing import Literal
 
 import click
@@ -24,6 +25,12 @@ from . import to_ascii_clean, to_reading
 @click.option(
     "-rs/-nrs", "--remove-multiple-spaces/--no-remove-multiple-spaces", default=True
 )
+@click.option(
+    "-l",
+    "--log-level",
+    type=click.Choice(["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]),
+    default="WARNING",
+)
 def main(
     text: str,
     ascii: bool = False,
@@ -32,7 +39,11 @@ def main(
     add_blank_between_words: bool = True,
     when_unknown: Literal["passthrough", "*", "unidecode"] = "passthrough",
     remove_multiple_spaces: bool = True,
+    log_level: Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"] = "WARNING",
 ) -> None:
+    basicConfig(level=log_level)
+    captureWarnings(True)
+
     if ascii:
         text = to_ascii_clean(text, remove_multiple_spaces=remove_multiple_spaces)
     else:

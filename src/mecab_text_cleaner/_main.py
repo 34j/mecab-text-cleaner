@@ -193,7 +193,7 @@ def to_reading(
             LOG.debug(f"word={word}, feature={word.feature}")
             reading = getattr(word.feature, reading_type)
 
-            if reading in ("*", None):
+            if reading in ("", "*", None):
                 # unknown reading
                 if not (word.feature.pos1 == "補助記号" and word.feature.pos2 == "一般"):
                     # known symbol
