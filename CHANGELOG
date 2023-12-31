@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.1.1 (2023-12-31)
+
+### Fix
+
+- Update dependency attrs to v23.2.0 (#49) ([`53e2ea7`](https://github.com/34j/mecab-text-cleaner/commit/53e2ea7a8d909bb34ac049e353025c944cad09d2))
+
 ## v0.1.0 (2023-09-04)
 
 ### Documentation
