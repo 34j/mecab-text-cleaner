@@ -34,7 +34,7 @@ click = "^8.1.7"
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = ">=3"
-pytest = "^7.0"
+pytest = "^8.0.0"
 pytest-cov = "^3.0"
 
 [tool.poetry.group.docs]
