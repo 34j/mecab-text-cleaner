@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mecab-text-cleaner"
-version = "0.1.1"
+version = "0.1.0"
 description = "Simple Python package for getting japanese reading (yomigana) using MeCab"
 authors = ["34j <34j.95a2p@simplelogin.com>"]
 license = "MIT"
