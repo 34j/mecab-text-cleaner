@@ -8,7 +8,10 @@ def test_simple():
 
 
 def test_complex():
-    assert to_reading(" 1한.    人、武蔵 小杉に向かう。") == "1 한. ヒト=、 ム]サシ コスギ= ニ ムカウ=。"
+    assert (
+        to_reading(" 1한.    人、武蔵 小杉に向かう。")
+        == "1 한. ヒト=、 ム]サシ コスギ= ニ ムカウ=。"
+    )
 
 
 def test_multiline():
@@ -16,7 +19,10 @@ def test_multiline():
 
 
 def test_multiline_noatype():
-    assert to_reading("     한空、雲。\n雨！（", add_atype=False) == "한 ソラ、 クモ。\nアメ！（"
+    assert (
+        to_reading("     한空、雲。\n雨！（", add_atype=False)
+        == "한 ソラ、 クモ。\nアメ！（"
+    )
 
 
 def test_multiline_noblank():
@@ -34,7 +40,10 @@ def test_multiline_unidecode():
 
 
 def test_multiline_star():
-    assert to_reading("     한空、雲。\n雨！（", when_unknown="*") == "* ソ]ラ、 ク]モ。\nア]メ！（"
+    assert (
+        to_reading("     한空、雲。\n雨！（", when_unknown="*")
+        == "* ソ]ラ、 ク]モ。\nア]メ！（"
+    )
 
 
 def test_multiline_custom():
