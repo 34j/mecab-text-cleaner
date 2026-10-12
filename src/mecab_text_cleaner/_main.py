@@ -153,8 +153,9 @@ def to_reading(
     reading_type: Literal["orth", "pron", "kana"] = "pron",
     add_atype: bool = True,
     add_blank_between_words: bool = True,
-    when_unknown: Literal["passthrough", "*", "unidecode"]
-    | Callable[[str], str] = "passthrough",
+    when_unknown: (
+        Literal["passthrough", "*", "unidecode"] | Callable[[str], str]
+    ) = "passthrough",
     tagger: fugashi.Tagger = _get_tagger(),
 ) -> str:
     """Convert text to reading.
@@ -212,7 +213,9 @@ def to_reading(
 
             if reading in ("", "*", None):
                 # unknown reading
-                if not (word.feature.pos1 == "補助記号" and word.feature.pos2 == "一般"):
+                if not (
+                    word.feature.pos1 == "補助記号" and word.feature.pos2 == "一般"
+                ):
                     # known symbol
                     if add_blank_between_words:
                         res = res[:-1]
